@@ -8,10 +8,9 @@ import Characters from "./containers/Characters";
 import Character from "./containers/Character";
 import Comics from "./containers/Comics";
 import Favorites from "./containers/Favorites";
-import SignIn from "./containers/SignIn";
-import SignUp from "./containers/SignUp";
-
-import Search from "./components/Search";
+// import SignIn from "./containers/SignIn";
+// import SignUp from "./containers/SignUp";
+import Results from "./containers/Results";
 
 function App() {
   return (
@@ -36,9 +35,7 @@ function App() {
             </li> */}
           </ul>
         </header>
-        <div className="wrapper">
-          <Search />
-        </div>
+        <div className="wrapper"></div>
 
         <Switch>
           <Route path="/characters/:id">
@@ -47,15 +44,18 @@ function App() {
           <Route path="/comics">
             <Comics />
           </Route>
+          <Route path="/search=:searchInput">
+            <Results />
+          </Route>
           <Route path="/user/favorites">
             <Favorites />
           </Route>
-          <Route path="/user/sign_in">
+          {/* <Route path="/user/sign_in">
             <SignIn />
           </Route>
           <Route path="/user/sign_up">
             <SignUp />
-          </Route>
+          </Route> */}
           <Route exact path="/">
             <Characters />
           </Route>

@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 
 import Pagination from "../components/Pagination";
 
+import Search from "../components/Search";
+
 const axios = require("axios");
 
 function Comics() {
-  const [comics, setComics] = useState();
+  const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [numPage, setNumPage] = useState([]);
@@ -15,7 +17,7 @@ function Comics() {
       const response = await axios.get(
         `http://localhost:3000/comics?page=${page}`
       );
-      setComics(response.data.data.results);
+      setData(response.data.data.results);
       const total = response.data.data.total;
       let copyNumPage = [];
       if (total % 100 === 0) {
@@ -42,6 +44,7 @@ function Comics() {
         </div>
       ) : (
         <>
+          <Search />
           <Pagination
             page={page}
             setPage={setPage}
@@ -49,7 +52,7 @@ function Comics() {
             setNumPage={setNumPage}
           />
           <ul className="comics wrapper d-flex flex-row space-between">
-            {comics.map(comic => {
+            {data.map(comic => {
               return (
                 <div
                   key={comic.id}

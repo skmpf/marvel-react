@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 function Character() {
-  const [character, setCharacter] = useState();
+  const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
@@ -13,7 +13,7 @@ function Character() {
       const response = await axios.get(
         "http://localhost:3000/characters/" + id
       );
-      setCharacter(response.data.data.results[0]);
+      setData(response.data.data.results[0]);
       setIsLoading(false);
     };
     fetchData();
@@ -29,19 +29,19 @@ function Character() {
         <ul className="charId wrapper d-flex flex-col">
           <li>
             <img
-              src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-              alt={character.name}
+              src={`${data.thumbnail.path}.${data.thumbnail.extension}`}
+              alt={data.name}
             />
           </li>
           <li>
-            <h3>{character.name}</h3>
+            <h3>{data.name}</h3>
           </li>
           <li>
-            <p>{character.description}</p>
+            <p>{data.description}</p>
           </li>
           <li className="d-flex flex-col">
             <h4>Appearances in Comics:</h4>
-            {character.comics.items.map(item => {
+            {data.comics.items.map(item => {
               return (
                 <a key={item.name} href={item.resourceURI}>
                   {item.name}
