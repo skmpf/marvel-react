@@ -11,7 +11,7 @@ function Character() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "http://localhost:3000/characters/" + id
+        "https://backend-marvel-test.herokuapp.com/characters/" + id
       );
       setData(response.data.data.results[0]);
       setIsLoading(false);

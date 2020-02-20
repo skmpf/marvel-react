@@ -17,7 +17,7 @@ function Results(props) {
   useEffect(() => {
     const fetchData = async (req, res) => {
       const response = await axios.get(
-        `http://localhost:3000/search/${category}/${searchInput}`
+        `https://backend-marvel-test.herokuapp.com/search/${category}/${searchInput}?page=${page}`
       );
       setData(response.data);
       const total = response.data.total;
@@ -36,7 +36,7 @@ function Results(props) {
       setIsLoading(false);
     };
     fetchData();
-  }, []);
+  }, [page]);
 
   return (
     <>
@@ -47,46 +47,37 @@ function Results(props) {
       ) : (
         <>
           <Pagination
-            page={page}
+            setIsLoading={setIsLoading}
             setPage={setPage}
             numPage={numPage}
-            setNumPage={setNumPage}
           />
           {category === "characters"
-            ? data.results.map(key => {
+            ? data.results.map(element => {
                 return (
-                  <ul key={key.id}>
-                    <li>
-                      <img
-                        src={`${key.thumbnail.path}.${key.thumbnail.extension}`}
-                        alt={key.name}
-                      />
-                    </li>
-                    <li>{key.name}</li>
-                    <li>{key.description}</li>
-                  </ul>
+                  <Card
+                    image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
+                    title={element.name}
+                    description={element.description}
+                    category={category}
+                    index={element.id}
+                  />
                 );
               })
-            : data.results.map(key => {
+            : data.results.map(element => {
                 return (
-                  <ul key={key.id}>
-                    <li>
-                      <img
-                        src={`${key.thumbnail.path}.${key.thumbnail.extension}`}
-                        alt={key.title}
-                      />
-                    </li>
-                    <li>{key.title}</li>
-                    <li>{key.description}</li>
-                  </ul>
+                  <Card
+                    image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
+                    title={element.title}
+                    description={element.description}
+                    category={category}
+                    index={element.id}
+                  />
                 );
               })}
-
           <Pagination
-            page={page}
+            setIsLoading={setIsLoading}
             setPage={setPage}
             numPage={numPage}
-            setNumPage={setNumPage}
           />
         </>
       )}

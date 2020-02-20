@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 import Pagination from "../components/Pagination";
 
 import Search from "../components/Search";
+import Card from "../components/Card";
 
 const axios = require("axios");
 
 function Characters() {
   const [data, setData] = useState();
+  const [category, setCategory] = useState("characters");
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [numPage, setNumPage] = useState([]);
@@ -16,7 +18,7 @@ function Characters() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `http://localhost:3000/characters?page=${page}`
+        `https://backend-marvel-test.herokuapp.com/characters?page=${page}`
       );
       setData(response.data.data.results);
       const total = response.data.data.total;
@@ -47,42 +49,29 @@ function Characters() {
         <>
           <Search />
           <Pagination
-            page={page}
+            setIsLoading={setIsLoading}
             setPage={setPage}
             numPage={numPage}
-            setNumPage={setNumPage}
           />
           <ul className="characters wrapper d-flex flex-row space-between">
-            {data.map(character => {
+            {data.map(element => {
               return (
-                <Link to={"/characters/" + character.id} key={character.id}>
-                  <div className="character d-flex flex-col align-center">
-                    <li>
-                      <img
-                        src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                        alt={character.name}
-                      />
-                    </li>
-                    <li>
-                      <h3>{character.name}</h3>
-                    </li>
-                    <li>
-                      {character.description ? (
-                        <p>{character.description}</p>
-                      ) : (
-                        <p></p>
-                      )}
-                    </li>
-                  </div>
+                <Link to={"/characters/" + element.id}>
+                  <Card
+                    image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
+                    title={element.name}
+                    description={element.description}
+                    category={category}
+                    index={element.id}
+                  />
                 </Link>
               );
             })}
           </ul>
           <Pagination
-            page={page}
+            setIsLoading={setIsLoading}
             setPage={setPage}
             numPage={numPage}
-            setNumPage={setNumPage}
           />
         </>
       )}

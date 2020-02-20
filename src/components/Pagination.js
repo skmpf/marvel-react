@@ -1,6 +1,6 @@
 import React from "react";
 
-function Pagination({ page, setPage, numPage, setNumPage }) {
+function Pagination({ setPage, numPage, setIsLoading }) {
   return (
     <ul className="pagination d-flex">
       {numPage.map(pageNum => {
@@ -9,6 +9,7 @@ function Pagination({ page, setPage, numPage, setNumPage }) {
             key={pageNum}
             onClick={() => {
               setPage(pageNum);
+              setIsLoading(true);
             }}
           >
             {pageNum}
