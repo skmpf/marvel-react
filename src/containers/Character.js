@@ -10,9 +10,10 @@ function Character() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:3000/character/" + id);
+      const response = await axios.get(
+        "http://localhost:3000/characters/" + id
+      );
       setCharacter(response.data.data.results[0]);
-      console.log(response.data.data.results[0]);
       setIsLoading(false);
     };
     fetchData();
@@ -25,16 +26,29 @@ function Character() {
           <p>Page Loading</p>
         </div>
       ) : (
-        <ul>
+        <ul className="charId wrapper d-flex flex-col">
           <li>
             <img
               src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
               alt={character.name}
             />
           </li>
-          <li>{character.name}</li>
-          <li>{character.description}</li>
-          {/* <li>{character.comics}</li> */}
+          <li>
+            <h3>{character.name}</h3>
+          </li>
+          <li>
+            <p>{character.description}</p>
+          </li>
+          <li className="d-flex flex-col">
+            <h4>Appearances in Comics:</h4>
+            {character.comics.items.map(item => {
+              return (
+                <a key={item.name} href={item.resourceURI}>
+                  {item.name}
+                </a>
+              );
+            })}
+          </li>
         </ul>
       )}
     </>

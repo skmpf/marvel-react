@@ -125,6 +125,8 @@ footer {
   margin-right: 5px;
 }
 
+/* PAGINATION */
+
 /* CHARACTERS */
 .characters {
   flex-wrap: wrap;
@@ -163,6 +165,9 @@ footer {
 .character > li:nth-child(2),
 .character > li:nth-child(3) {
   width: 160px;
+}
+.charId a {
+  color: black;
 }
 
 /* COMICS */
