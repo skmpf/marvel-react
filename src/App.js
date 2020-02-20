@@ -44,7 +44,7 @@ function App() {
           <Route path="/comics">
             <Comics />
           </Route>
-          <Route path="/search=:searchInput">
+          <Route path="/search/:category/:searchInput">
             <Results />
           </Route>
           <Route path="/user/favorites">

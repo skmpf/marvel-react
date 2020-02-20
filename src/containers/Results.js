@@ -8,6 +8,7 @@ import Card from "../components/Card";
 
 function Results(props) {
   const { searchInput } = useParams();
+  const { category } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
   const [page, setPage] = useState(1);
@@ -16,15 +17,10 @@ function Results(props) {
   useEffect(() => {
     const fetchData = async (req, res) => {
       const response = await axios.get(
-        `http://localhost:3000/search?search=${searchInput}`
+        `http://localhost:3000/search/${category}/${searchInput}`
       );
       setData(response.data);
-      //   console.log(response.data);
-      console.log(response.data[1].searchComics.results[0].title);
-
-      const total =
-        response.data[0].searchCharacters.total +
-        response.data[1].searchComics.total;
+      const total = response.data.total;
       let copyNumPage = [];
       if (total % 100 === 0) {
         for (let i = 1; i < total / 100; i++) {
@@ -56,44 +52,35 @@ function Results(props) {
             numPage={numPage}
             setNumPage={setNumPage}
           />
-          {data.map(search => {
-            return (
-              <ul>
-                {/* <li>
-                  {search.searchCharacters.results.map(result => {
-                    return (
-                      <ul>
-                        <li>
-                          <img
-                            src={`${result.thumbnail.path}.${result.thumbnail.extension}`}
-                            alt={result.name}
-                          />
-                        </li>
-                        <li>{result.name}</li>
-                        <li>{result.description}</li>
-                      </ul>
-                    );
-                  })}
-                </li> */}
-                {/* <li>
-                  {search.searchComics.results.map(result => {
-                    return (
-                      <ul>
-                        <li>
-                          <img
-                            src={`${result.thumbnail.path}.${result.thumbnail.extension}`}
-                            alt={result.title}
-                          />
-                        </li>
-                        <li>{result.title}</li>
-                        <li>{result.description}</li>
-                      </ul>
-                    );
-                  })}
-                </li> */}
-              </ul>
-            );
-          })}
+          {category === "characters"
+            ? data.results.map(key => {
+                return (
+                  <ul key={key.id}>
+                    <li>
+                      <img
+                        src={`${key.thumbnail.path}.${key.thumbnail.extension}`}
+                        alt={key.name}
+                      />
+                    </li>
+                    <li>{key.name}</li>
+                    <li>{key.description}</li>
+                  </ul>
+                );
+              })
+            : data.results.map(key => {
+                return (
+                  <ul key={key.id}>
+                    <li>
+                      <img
+                        src={`${key.thumbnail.path}.${key.thumbnail.extension}`}
+                        alt={key.title}
+                      />
+                    </li>
+                    <li>{key.title}</li>
+                    <li>{key.description}</li>
+                  </ul>
+                );
+              })}
 
           <Pagination
             page={page}

@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 
 function Search() {
   const [searchInput, setSearchInput] = useState("");
+  const [category, setCategory] = useState("characters");
 
   const history = useHistory();
 
@@ -22,10 +23,24 @@ function Search() {
               }}
             />
           </li>
+          <li>
+            <label htmlFor="categories">Choose a category</label>
+            <select
+              id="categories"
+              onChange={e => {
+                setCategory(e.target.value);
+              }}
+            >
+              <option defaultValue value="characters">
+                Characters
+              </option>
+              <option value="comics">Comics</option>
+            </select>
+          </li>
         </ul>
         <button
           onClick={() => {
-            history.push(`/search=${searchInput}`);
+            history.push(`/search/${category}/${searchInput}`);
           }}
         >
           SEARCH
