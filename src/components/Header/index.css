@@ -1,0 +1,29 @@
+/* HEADER */
+header {
+  background-color: #1d1d1d;
+}
+header a,
+header a:visited {
+  color: #999999;
+}
+header a:hover {
+  color: white;
+  cursor: pointer;
+}
+header img {
+  width: 130px;
+}
+.menu {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #1d1d1d;
+}
+.border {
+  border: 1px solid #393939;
+  width: 100%;
+}

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+import "./index.css";
+
 function Character() {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);

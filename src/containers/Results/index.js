@@ -1,27 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-import Pagination from "../components/Pagination";
+import axios from "axios";
 
-import Search from "../components/Search";
-import Card from "../components/Card";
+import "./index.css";
 
-const axios = require("axios");
+import Pagination from "../../components/Pagination/";
+import Card from "../../components/Card/";
 
-function Characters() {
-  const [data, setData] = useState();
-  const [category, setCategory] = useState("characters");
+function Results(props) {
+  const { searchInput } = useParams();
+  const { category } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState();
   const [page, setPage] = useState(1);
   const [numPage, setNumPage] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (req, res) => {
       const response = await axios.get(
-        `https://backend-marvel-test.herokuapp.com/characters?page=${page}`
+        `https://backend-marvel-test.herokuapp.com/search/${category}/${searchInput}?page=${page}`
       );
-      setData(response.data.data.results);
-      const total = response.data.data.total;
+      setData(response.data);
+      const total = response.data.total;
       let copyNumPage = [];
       if (total % 100 === 0) {
         for (let i = 1; i < total / 100; i++) {
@@ -47,16 +48,15 @@ function Characters() {
         </div>
       ) : (
         <>
-          <Search />
           <Pagination
             setIsLoading={setIsLoading}
+            page={page}
             setPage={setPage}
             numPage={numPage}
           />
-          <ul className="characters wrapper d-flex flex-row space-between">
-            {data.map(element => {
-              return (
-                <Link to={"/characters/" + element.id}>
+          {category === "characters"
+            ? data.results.map(element => {
+                return (
                   <Card
                     image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
                     title={element.name}
@@ -64,12 +64,22 @@ function Characters() {
                     category={category}
                     index={element.id}
                   />
-                </Link>
-              );
-            })}
-          </ul>
+                );
+              })
+            : data.results.map(element => {
+                return (
+                  <Card
+                    image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
+                    title={element.title}
+                    description={element.description}
+                    category={category}
+                    index={element.id}
+                  />
+                );
+              })}
           <Pagination
             setIsLoading={setIsLoading}
+            page={page}
             setPage={setPage}
             numPage={numPage}
           />
@@ -79,4 +89,4 @@ function Characters() {
   );
 }
 
-export default Characters;
+export default Results;

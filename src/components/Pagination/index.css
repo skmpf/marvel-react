@@ -1,0 +1,24 @@
+/* PAGINATION */
+.pagination {
+  height: 50px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pagination > ul {
+  max-width: 65vw;
+  overflow-x: hidden;
+}
+.pagination > li:not(:nth-child(3)):hover,
+.pagination > li > ul > li:hover {
+  cursor: pointer;
+  color: #ee151e;
+}
+.pagination li {
+  margin: 0 10px;
+}
+.page {
+  display: flex;
+  align-items: center;
+}

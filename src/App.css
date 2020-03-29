@@ -13,6 +13,7 @@ button {
   font-size: 16px;
   font-weight: bold;
   color: white;
+  border: none;
   background-color: #ee151e;
 }
 button:hover {
@@ -68,34 +69,6 @@ a:visited {
   font-size: 25px;
 }
 
-/* HEADER */
-header {
-  background-color: #1d1d1d;
-}
-header a,
-header a:visited {
-  color: #999999;
-}
-header a:hover {
-  color: white;
-  cursor: pointer;
-}
-header img {
-  width: 130px;
-}
-header > p {
-  border: 1px solid #393939;
-  width: 100%;
-}
-
-/* FOOTER */
-footer {
-  height: 40px;
-  color: white;
-  font-weight: bold;
-  background-color: #1d1d1d;
-}
-
 /* MENU */
 .menu {
   height: 40px;
@@ -107,86 +80,3 @@ footer {
 .menu > li {
   padding: 0 18px;
 }
-
-/* SEARCH */
-.search {
-  margin: 35px 30px;
-  height: 40px;
-}
-.search > ul {
-  height: 40px;
-}
-.search i {
-  font-size: 20px;
-  color: #8191a0;
-  margin-right: 10px;
-}
-.search input {
-  margin-right: 5px;
-}
-
-/* PAGINATION */
-
-/* CHARACTERS */
-.characters {
-  flex-wrap: wrap;
-}
-
-/* CHARACTER */
-.character {
-  width: 192px;
-  height: 355px;
-  background-color: #151515;
-  color: #999999;
-  margin-bottom: 10px;
-}
-.character:hover {
-  color: white;
-  background-color: #ee151e;
-  cursor: pointer;
-}
-.character img {
-  height: 206px;
-  width: 192px;
-  object-fit: fill;
-  object-position: center;
-  margin-bottom: 15px;
-}
-.character h3 {
-  margin-bottom: 10px;
-}
-.character p {
-  margin-top: 30px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  box-sizing: border-box;
-}
-.character > li:nth-child(2),
-.character > li:nth-child(3) {
-  width: 160px;
-}
-.charId a {
-  color: black;
-}
-
-/* COMICS */
-.comics {
-  flex-wrap: wrap;
-}
-.comic {
-  height: 400px;
-  width: 226px;
-}
-.comic img {
-  height: 336pxpx;
-  width: 226px;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* FAVORITES */
-
-/* SIGN IN */
-
-/* SIGN UP */

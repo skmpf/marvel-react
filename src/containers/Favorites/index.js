@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
+import "./index.css";
+
 import axios from "axios";
 
-import Pagination from "../components/Pagination";
-import Card from "../components/Card";
+import Pagination from "../../components/Pagination/";
+import Card from "../../components/Card/";
 
 function Favorites() {
   const [isLoading, setIsLoading] = useState(true);

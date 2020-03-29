@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
+import "./index.css";
+
 function Search() {
   const [searchInput, setSearchInput] = useState("");
   const [category, setCategory] = useState("characters");
@@ -10,7 +12,7 @@ function Search() {
   return (
     <>
       <div className="search d-flex just-center">
-        <ul className="d-flex align-center">
+        <ul>
           <li>
             <i className="fas fa-search"></i>
           </li>
@@ -23,8 +25,8 @@ function Search() {
               }}
             />
           </li>
-          <li>
-            <label htmlFor="categories">Choose a category</label>
+          <li className="d-flex flex-col align-center">
+            <label htmlFor="categories">SEARCH FOR</label>
             <select
               id="categories"
               onChange={e => {
@@ -37,14 +39,16 @@ function Search() {
               <option value="comics">Comics</option>
             </select>
           </li>
+          <li>
+            <button
+              onClick={() => {
+                history.push(`/search/${category}/${searchInput}`);
+              }}
+            >
+              LET'S GO!
+            </button>
+          </li>
         </ul>
-        <button
-          onClick={() => {
-            history.push(`/search/${category}/${searchInput}`);
-          }}
-        >
-          SEARCH
-        </button>
       </div>
     </>
   );
