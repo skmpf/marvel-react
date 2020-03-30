@@ -11,8 +11,8 @@ import Character from "./containers/Character/";
 import Comics from "./containers/Comics/";
 import Results from "./containers/Results/";
 import Favorites from "./containers/Favorites/";
-import SignIn from "./containers/SignIn/";
-import SignUp from "./containers/SignUp/";
+// import SignIn from "./containers/SignIn/";
+// import SignUp from "./containers/SignUp/";
 
 function App() {
   return (
@@ -32,12 +32,12 @@ function App() {
           <Route path="/user/favorites">
             <Favorites />
           </Route>
-          <Route path="/user/sign_in">
+          {/* <Route path="/user/sign_in">
             <SignIn />
           </Route>
           <Route path="/user/sign_up">
             <SignUp />
-          </Route>
+          </Route> */}
           <Route exact path="/">
             <Characters />
           </Route>

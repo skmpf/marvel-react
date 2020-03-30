@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 import "./index.css";
+import Loading from "../../components/Loading/";
 
 function Character() {
   const [data, setData] = useState();
@@ -24,30 +25,24 @@ function Character() {
   return (
     <>
       {isLoading ? (
-        <div className="loading wrapper d-flex align-center just-center">
-          <p>Page Loading</p>
-        </div>
+        <Loading />
       ) : (
-        <ul className="charId wrapper d-flex flex-col">
+        <ul className="charId wrapper">
           <li>
             <img
               src={`${data.thumbnail.path}.${data.thumbnail.extension}`}
               alt={data.name}
             />
+            <h2>{data.name}</h2>
           </li>
-          <li>
-            <h3>{data.name}</h3>
-          </li>
-          <li>
+          <li className="character-details">
             <p>{data.description}</p>
-          </li>
-          <li className="d-flex flex-col">
             <h4>Appearances in Comics:</h4>
             {data.comics.items.map(item => {
               return (
-                <a key={item.name} href={item.resourceURI}>
+                <span key={item.name} href={item.resourceURI}>
                   {item.name}
-                </a>
+                </span>
               );
             })}
           </li>

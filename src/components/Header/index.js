@@ -21,9 +21,9 @@ function Header() {
         <li>
           <Link to="/user/favorites">FAVORITES</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/user/sign_in">SIGN IN</Link>
-        </li>
+        </li> */}
       </ul>
     </>
   );

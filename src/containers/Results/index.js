@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import axios from "axios";
 
 import "./index.css";
-
+import Loading from "../../components/Loading/";
+import Search from "../../components/Search/";
 import Pagination from "../../components/Pagination/";
 import Card from "../../components/Card/";
 
-function Results(props) {
+function Results() {
   const { searchInput } = useParams();
   const { category } = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -23,6 +24,7 @@ function Results(props) {
       );
       setData(response.data);
       const total = response.data.total;
+
       let copyNumPage = [];
       if (total % 100 === 0) {
         for (let i = 1; i < total / 100; i++) {
@@ -35,6 +37,8 @@ function Results(props) {
         }
         setNumPage(copyNumPage);
       }
+      console.log("copyNumPage");
+      console.log(copyNumPage);
       setIsLoading(false);
     };
     fetchData();
@@ -42,47 +46,58 @@ function Results(props) {
 
   return (
     <>
+      <Search />
       {isLoading ? (
-        <div className="loading wrapper d-flex align-center just-center">
-          <p>Page Loading</p>
-        </div>
+        <Loading />
       ) : (
         <>
-          <Pagination
-            setIsLoading={setIsLoading}
-            page={page}
-            setPage={setPage}
-            numPage={numPage}
-          />
-          {category === "characters"
-            ? data.results.map(element => {
-                return (
-                  <Card
-                    image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
-                    title={element.name}
-                    description={element.description}
-                    category={category}
-                    index={element.id}
-                  />
-                );
-              })
-            : data.results.map(element => {
-                return (
-                  <Card
-                    image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
-                    title={element.title}
-                    description={element.description}
-                    category={category}
-                    index={element.id}
-                  />
-                );
-              })}
-          <Pagination
-            setIsLoading={setIsLoading}
-            page={page}
-            setPage={setPage}
-            numPage={numPage}
-          />
+          {numPage.length > 1 ? (
+            <Pagination
+              setIsLoading={setIsLoading}
+              page={page}
+              setPage={setPage}
+              numPage={numPage}
+            />
+          ) : (
+            <div className="no-pagination"></div>
+          )}
+          <div className="results wrapper">
+            {category === "characters"
+              ? data.results.map(element => {
+                  return (
+                    <Link to={"/characters/" + element.id} key={element.id}>
+                      <Card
+                        image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
+                        title={element.name}
+                        description={element.description}
+                        category={category}
+                        index={element.id}
+                      />
+                    </Link>
+                  );
+                })
+              : data.results.map(element => {
+                  return (
+                    <Card
+                      image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
+                      title={element.title}
+                      description={element.description}
+                      category={category}
+                      index={element.id}
+                    />
+                  );
+                })}
+          </div>
+          {numPage.length > 1 ? (
+            <Pagination
+              setIsLoading={setIsLoading}
+              page={page}
+              setPage={setPage}
+              numPage={numPage}
+            />
+          ) : (
+            <div className="no-pagination"></div>
+          )}
         </>
       )}
     </>

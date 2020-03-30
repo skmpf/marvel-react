@@ -1,0 +1,15 @@
+/* LOADING */
+.loading {
+  min-height: 85vh;
+}
+.loading p {
+  font-weight: bold;
+  font-size: 25px;
+}
+.loading img {
+  width: 215px;
+  height: 215px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}

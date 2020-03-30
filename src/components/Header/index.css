@@ -2,18 +2,14 @@
 header {
   background-color: #1d1d1d;
 }
-header a,
-header a:visited {
-  color: #999999;
-}
-header a:hover {
-  color: white;
-  cursor: pointer;
-}
 header img {
-  width: 130px;
+  width: 300px;
 }
 .menu {
+  height: 40px;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: bold;
   position: sticky;
   top: 0;
   width: 100%;
@@ -22,6 +18,18 @@ header img {
   align-items: center;
   justify-content: center;
   background-color: #1d1d1d;
+  z-index: 10;
+}
+.menu a,
+.menu a:visited {
+  color: #999999;
+}
+.menu a:hover {
+  color: white;
+  cursor: pointer;
+}
+.menu > li {
+  padding: 0 18px;
 }
 .border {
   border: 1px solid #393939;

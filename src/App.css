@@ -27,16 +27,24 @@ input {
   border: 1px solid #d9e0eb;
   box-sizing: border-box;
 }
+h2 {
+  font-size: 2em;
+  font-weight: bold;
+}
 h3 {
   font-size: 16px;
   font-weight: bold;
+}
+h4 {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 p {
   font-size: 12px;
 }
 a,
 a:visited {
-  color: white;
   text-decoration: none;
 }
 
@@ -58,25 +66,4 @@ a:visited {
 }
 .space-between {
   justify-content: space-between;
-}
-
-/* LOADING */
-.loading {
-  height: 70vh;
-}
-.loading p {
-  font-weight: bold;
-  font-size: 25px;
-}
-
-/* MENU */
-.menu {
-  height: 40px;
-  color: white;
-  font-size: 12px;
-  line-height: 12px;
-  font-weight: bold;
-}
-.menu > li {
-  padding: 0 18px;
 }

@@ -9,22 +9,29 @@ function Pagination({ page, setPage, numPage, setIsLoading }) {
     // filter to only show +/- 7 pages of current page
     const filterPages = () => {
       const filter = [];
-      if (page < 8) {
-        for (let i = 1; i < 16; i++) {
-          filter.push(i);
-        }
-      } else if (page > numPage.length - 8) {
-        for (let i = numPage.length - 14; i <= numPage.length; i++) {
+      if (numPage.length < 16) {
+        for (let i = 1; i <= numPage.length; i++) {
           filter.push(i);
         }
       } else {
-        for (let i = page - 7; i <= page; i++) {
-          filter.push(i);
-        }
-        for (let i = page + 1; i < page + 8; i++) {
-          filter.push(i);
+        if (page < 8) {
+          for (let i = 1; i < 16; i++) {
+            filter.push(i);
+          }
+        } else if (page > numPage.length - 8) {
+          for (let i = numPage.length - 14; i <= numPage.length; i++) {
+            filter.push(i);
+          }
+        } else {
+          for (let i = page - 7; i <= page; i++) {
+            filter.push(i);
+          }
+          for (let i = page + 1; i < page + 8; i++) {
+            filter.push(i);
+          }
         }
       }
+
       setFilter(filter);
     };
     filterPages();
@@ -34,8 +41,10 @@ function Pagination({ page, setPage, numPage, setIsLoading }) {
     <ul className="pagination">
       <li
         onClick={() => {
-          setPage(1);
-          setIsLoading(true);
+          if (page !== 1) {
+            setPage(1);
+            setIsLoading(true);
+          }
         }}
       >
         <i className="fas fa-chevron-left"></i>
@@ -56,6 +65,7 @@ function Pagination({ page, setPage, numPage, setIsLoading }) {
           {filter.map(pageNum => {
             return (
               <li
+                className={pageNum === page && "page-bold"}
                 key={pageNum}
                 onClick={() => {
                   setPage(pageNum);
@@ -80,8 +90,10 @@ function Pagination({ page, setPage, numPage, setIsLoading }) {
       </li>
       <li
         onClick={() => {
-          setPage(numPage.length);
-          setIsLoading(true);
+          if (page !== numPage.length) {
+            setPage(numPage.length);
+            setIsLoading(true);
+          }
         }}
       >
         <i className="fas fa-chevron-right"></i>

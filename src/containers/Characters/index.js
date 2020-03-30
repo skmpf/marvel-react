@@ -5,6 +5,7 @@ import "./index.css";
 
 import Pagination from "../../components/Pagination/";
 
+import Loading from "../../components/Loading/";
 import Search from "../../components/Search/";
 import Card from "../../components/Card/";
 
@@ -51,9 +52,7 @@ function Characters() {
         numPage={numPage}
       />
       {isLoading ? (
-        <div className="loading wrapper d-flex align-center just-center">
-          <p>Page Loading</p>
-        </div>
+        <Loading />
       ) : (
         <>
           <ul className="characters wrapper d-flex flex-row space-between">

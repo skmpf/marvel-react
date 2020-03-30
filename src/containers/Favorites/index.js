@@ -5,6 +5,7 @@ import "./index.css";
 
 import axios from "axios";
 
+import Search from "../../components/Search/";
 import Pagination from "../../components/Pagination/";
 import Card from "../../components/Card/";
 
@@ -49,7 +50,12 @@ function Favorites() {
   //   fetchData();
   // }, [page]);
 
-  return <span>Favorites</span>;
+  return (
+    <>
+      <Search />
+      <span>Favorites</span>
+    </>
+  );
 }
 
 export default Favorites;

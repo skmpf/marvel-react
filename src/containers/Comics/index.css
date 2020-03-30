@@ -1,14 +1,5 @@
 /* COMICS */
 .comics {
+  display: flex;
   flex-wrap: wrap;
-}
-.comic {
-  height: 400px;
-  width: 226px;
-}
-.comic img {
-  height: 336pxpx;
-  width: 226px;
-  object-fit: cover;
-  object-position: center;
 }

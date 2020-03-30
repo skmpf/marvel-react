@@ -1,0 +1,9 @@
+/* RESULTS */
+.results {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.no-pagination {
+  height: 20px;
+}
