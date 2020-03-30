@@ -1,4 +1,8 @@
 {
+  "resolutions": {
+    "minimist": "^1.2.5",
+    "acorn": "^7.1.1"
+  },
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
@@ -17,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "preinstall": "npx npm-force-resolutions"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -33,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "minimist": "^1.2.5"
   }
 }
