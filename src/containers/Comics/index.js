@@ -9,7 +9,7 @@ import Card from "../../components/Card/";
 
 const axios = require("axios");
 
-function Comics() {
+function Comics({ addFav, handleRemoveFav }) {
   const [data, setData] = useState();
   const [category, setCategory] = useState("comics");
   const [isLoading, setIsLoading] = useState(true);
@@ -52,22 +52,23 @@ function Comics() {
       {isLoading ? (
         <Loading />
       ) : (
-        <>
-          <ul className="comics wrapper d-flex flex-row space-between">
-            {data.map(element => {
-              return (
-                <Card
-                  image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
-                  title={element.title}
-                  description={element.description}
-                  category={category}
-                  index={element.id}
-                  key={element.id}
-                />
-              );
-            })}
-          </ul>
-        </>
+        <ul className="comics wrapper">
+          {data.map(element => {
+            return (
+              <Card
+                image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
+                title={element.title}
+                description={element.description}
+                category={category}
+                id={element.id}
+                key={element.id}
+                addFav={addFav}
+                handleRemoveFav={handleRemoveFav}
+                star
+              />
+            );
+          })}
+        </ul>
       )}
       <Pagination
         setIsLoading={setIsLoading}

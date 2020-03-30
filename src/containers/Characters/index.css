@@ -1,4 +1,6 @@
 /* CHARACTERS */
 .characters {
+  display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }

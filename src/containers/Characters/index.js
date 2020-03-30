@@ -11,7 +11,7 @@ import Card from "../../components/Card/";
 
 const axios = require("axios");
 
-function Characters() {
+function Characters({ addFav, handleRemoveFav }) {
   const [data, setData] = useState();
   const [category, setCategory] = useState("characters");
   const [isLoading, setIsLoading] = useState(true);
@@ -54,23 +54,22 @@ function Characters() {
       {isLoading ? (
         <Loading />
       ) : (
-        <>
-          <ul className="characters wrapper d-flex flex-row space-between">
-            {data.map(element => {
-              return (
-                <Link to={"/characters/" + element.id} key={element.id}>
-                  <Card
-                    image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
-                    title={element.name}
-                    description={element.description}
-                    category={category}
-                    index={element.id}
-                  />
-                </Link>
-              );
-            })}
-          </ul>
-        </>
+        <ul className="characters wrapper">
+          {data.map(element => {
+            return (
+              <Card
+                image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
+                title={element.name}
+                description={element.description}
+                category={category}
+                id={element.id}
+                addFav={addFav}
+                handleRemoveFav={handleRemoveFav}
+                star
+              />
+            );
+          })}
+        </ul>
       )}
       <Pagination
         setIsLoading={setIsLoading}

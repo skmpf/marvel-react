@@ -1,6 +1,7 @@
 // import packages and stylesheet
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Cookies from "js-cookie";
 import "./App.css";
 
 // import components and containers
@@ -15,6 +16,51 @@ import Favorites from "./containers/Favorites/";
 // import SignUp from "./containers/SignUp/";
 
 function App() {
+  let cookie = Cookies.get("fav");
+  const [fav, setFav] = useState((cookie && JSON.parse(cookie)) || [[], []]);
+  // add to favorites
+  const addFav = (id, from) => {
+    let favCopy = [...fav];
+    if (from === "characters") {
+      if (favCopy[0].indexOf(id) === -1) {
+        favCopy[0].push(id);
+        alert("Added to favorites!");
+      } else {
+        alert("Already in favorites!");
+      }
+    } else if (favCopy[1].indexOf(id) === -1) {
+      favCopy[1].push(id);
+      alert("Added to favorites");
+    } else {
+      alert("Already in favorites!");
+    }
+    setFav(favCopy);
+    Cookies.set("fav", JSON.stringify(favCopy), { expires: 100 });
+  };
+
+  // remove from favorites
+  const handleRemoveFav = id => {
+    const fav = Cookies.get("fav");
+    const tabFav = fav && JSON.parse(fav);
+
+    let newFav = [[], []];
+    for (let i = 0; i < tabFav.length; i++) {
+      for (let j = 0; j < tabFav[i].length; j++) {
+        if (i === 0) {
+          if (tabFav[i][j] !== id) {
+            newFav[0].push(tabFav[i][j]);
+          }
+        } else {
+          if (tabFav[i][j] !== id) {
+            newFav[1].push(tabFav[i][j]);
+          }
+        }
+      }
+    }
+    setFav(newFav);
+    Cookies.set("fav", JSON.stringify(newFav), { expires: 100 });
+  };
+
   return (
     <>
       <Router>
@@ -24,13 +70,13 @@ function App() {
             <Character />
           </Route>
           <Route path="/comics">
-            <Comics />
+            <Comics addFav={addFav} handleRemoveFav={handleRemoveFav} />
           </Route>
           <Route path="/search/:category/:searchInput">
-            <Results />
+            <Results addFav={addFav} handleRemoveFav={handleRemoveFav} />
           </Route>
           <Route path="/user/favorites">
-            <Favorites />
+            <Favorites fav={fav} handleRemoveFav={handleRemoveFav} />
           </Route>
           {/* <Route path="/user/sign_in">
             <SignIn />
@@ -39,7 +85,7 @@ function App() {
             <SignUp />
           </Route> */}
           <Route exact path="/">
-            <Characters />
+            <Characters addFav={addFav} handleRemoveFav={handleRemoveFav} />
           </Route>
         </Switch>
         <Footer />

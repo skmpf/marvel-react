@@ -9,7 +9,7 @@ import Search from "../../components/Search/";
 import Pagination from "../../components/Pagination/";
 import Card from "../../components/Card/";
 
-function Results() {
+function Results({ addFav, handleRemoveFav }) {
   const { searchInput } = useParams();
   const { category } = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -37,12 +37,10 @@ function Results() {
         }
         setNumPage(copyNumPage);
       }
-      console.log("copyNumPage");
-      console.log(copyNumPage);
       setIsLoading(false);
     };
     fetchData();
-  }, [page]);
+  }, []);
 
   return (
     <>
@@ -65,15 +63,16 @@ function Results() {
             {category === "characters"
               ? data.results.map(element => {
                   return (
-                    <Link to={"/characters/" + element.id} key={element.id}>
-                      <Card
-                        image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
-                        title={element.name}
-                        description={element.description}
-                        category={category}
-                        index={element.id}
-                      />
-                    </Link>
+                    <Card
+                      image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
+                      title={element.name}
+                      description={element.description}
+                      category={category}
+                      id={element.id}
+                      addFav={addFav}
+                      handleRemoveFav={handleRemoveFav}
+                      star
+                    />
                   );
                 })
               : data.results.map(element => {
@@ -83,7 +82,10 @@ function Results() {
                       title={element.title}
                       description={element.description}
                       category={category}
-                      index={element.id}
+                      id={element.id}
+                      addFav={addFav}
+                      handleRemoveFav={handleRemoveFav}
+                      star
                     />
                   );
                 })}

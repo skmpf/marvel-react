@@ -3,7 +3,7 @@
   min-height: 83.2vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 .charId img {
   height: 50vh;
@@ -13,10 +13,16 @@
   margin-right: 30px;
 }
 .character-details {
+  width: 50vw;
   display: flex;
   flex-direction: column;
+  margin: 10px 0;
+  justify-content: space-between;
 }
-.character-details span {
+.character-details p {
   font-size: 18px;
   margin-bottom: 5px;
+}
+.character-details > p:first-child {
+  margin-bottom: 20px;
 }

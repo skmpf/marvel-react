@@ -1,0 +1,18 @@
+/* FAVORITES */
+.favorites {
+  margin: 20px auto;
+  min-height: 62.5vh;
+  display: flex;
+  justify-content: space-between;
+}
+.favorites .characters,
+.favorites .comics {
+  margin: 20px 0;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.favorites > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+}

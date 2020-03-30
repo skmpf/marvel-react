@@ -1,59 +1,83 @@
 import React, { useState, useEffect } from "react";
-import Cookies from "js-cookie";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 import "./index.css";
 
-import axios from "axios";
-
+import Loading from "../../components/Loading/";
 import Search from "../../components/Search/";
-import Pagination from "../../components/Pagination/";
 import Card from "../../components/Card/";
 
-function Favorites() {
+function Favorites({ fav, handleRemoveFav }) {
+  const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState();
-  const [page, setPage] = useState(1);
-  const [numPage, setNumPage] = useState([]);
 
-  const [favCharacters, setFavCharacters] = useState([]);
-  const [favComics, setFavComics] = useState([]);
-
-  // if (Cookies.get("favCharacters")) {
-  //   setFavCharacters(Cookies.get("favCharacters"));
-  // }
-  // if (Cookies.get("favComics")) {
-  //   setFavComics(Cookies.get("favComics"));
-  // }
-
-  // useEffect(() => {
-  //   const fetchData = async (req, res) => {
-  //     const response = await axios.get(
-  //       `https://backend-marvel-test.herokuapp.com/search/${category}/${searchInput}?page=${page}`
-  //     );
-  //     setData(response.data);
-  //     setCategory(req.params.category);
-  //     const total = response.data.total;
-  //     let copyNumPage = [];
-  //     if (total % 100 === 0) {
-  //       for (let i = 1; i < total / 100; i++) {
-  //         copyNumPage.push(i);
-  //       }
-  //       setNumPage(copyNumPage);
-  //     } else {
-  //       for (let i = 1; i < total / 100 + 1; i++) {
-  //         copyNumPage.push(i);
-  //       }
-  //       setNumPage(copyNumPage);
-  //     }
-  //     setIsLoading(false);
-  //   };
-  //   fetchData();
-  // }, [page]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.post(
+        `https://backend-marvel-test.herokuapp.com/favorites`,
+        { fav }
+      );
+      setData(response.data);
+      setIsLoading(false);
+    };
+    fetchData();
+  }, [fav]);
 
   return (
     <>
       <Search />
-      <span>Favorites</span>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="favorites wrapper">
+          <div>
+            <h2>CHARACTERS</h2>
+            {data[0].length === 0 ? (
+              <span>No favorite character!</span>
+            ) : (
+              <ul className="characters">
+                {data[0].map(element => {
+                  return (
+                    <Card
+                      image={`${element.data.results[0].thumbnail.path}.${element.data.results[0].thumbnail.extension}`}
+                      title={element.data.results[0].name}
+                      description={element.data.results[0].description}
+                      category={"characters"}
+                      id={element.data.results[0].id}
+                      handleRemoveFav={handleRemoveFav}
+                      cross
+                    />
+                  );
+                })}
+              </ul>
+            )}
+          </div>
+          <div>
+            <h2>COMICS</h2>
+            {data[1].length === 0 ? (
+              <span>No favorite comic!</span>
+            ) : (
+              <ul className="comics">
+                {data[1].map(element => {
+                  return (
+                    <Card
+                      image={`${element.data.results[0].thumbnail.path}.${element.data.results[0].thumbnail.extension}`}
+                      title={element.data.results[0].title}
+                      description={element.data.results[0].description}
+                      category={"comics"}
+                      id={element.data.results[0].id}
+                      key={element.data.results[0].id}
+                      handleRemoveFav={handleRemoveFav}
+                      cross
+                    />
+                  );
+                })}
+              </ul>
+            )}
+          </div>
+        </div>
+      )}
     </>
   );
 }

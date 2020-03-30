@@ -40,9 +40,9 @@ function Character() {
             <h4>Appearances in Comics:</h4>
             {data.comics.items.map(item => {
               return (
-                <span key={item.name} href={item.resourceURI}>
+                <p key={item.name} href={item.resourceURI}>
                   {item.name}
-                </span>
+                </p>
               );
             })}
           </li>
