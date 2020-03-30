@@ -5,49 +5,39 @@ import "./index.css";
 function Pagination({ page, setPage, numPage, setIsLoading }) {
   const [filter, setFilter] = useState([]);
 
+  console.log("numPage");
+  console.log(numPage);
+
   useEffect(() => {
-    // filter to only show +/- 7 pages of current page
     const filterPages = () => {
       const filter = [];
-      console.log("numPage.length");
-      console.log(numPage.length);
-      // if (numPage.length < 16) {
-      //   console.log("<16");
-
-      //   for (let i = 1; i <= numPage.length; i++) {
-      //     console.log("after for <16");
-
-      //     filter.push(i);
-      //     console.log("filter <16");
-      //     console.log(filter);
-      //   }
-      // } else {
-      console.log("else");
-
-      if (page < 8) {
-        for (let i = 1; i < 16; i++) {
-          filter.push(i);
-        }
-      } else if (page > numPage.length - 8) {
-        for (let i = numPage.length - 14; i <= numPage.length; i++) {
+      if (numPage.length < 16) {
+        for (let i = 1; i <= numPage.length; i++) {
           filter.push(i);
         }
       } else {
-        for (let i = page - 7; i <= page; i++) {
-          filter.push(i);
-        }
-        for (let i = page + 1; i < page + 8; i++) {
-          filter.push(i);
+        // filter to only show +/- 7 pages of current page
+        if (page < 8) {
+          for (let i = 1; i < 16; i++) {
+            filter.push(i);
+          }
+        } else if (page > numPage.length - 8) {
+          for (let i = numPage.length - 14; i <= numPage.length; i++) {
+            filter.push(i);
+          }
+        } else {
+          for (let i = page - 7; i <= page; i++) {
+            filter.push(i);
+          }
+          for (let i = page + 1; i < page + 8; i++) {
+            filter.push(i);
+          }
         }
       }
-      // }
-      console.log("filter");
-      console.log(filter);
-
       setFilter(filter);
     };
     filterPages();
-  }, [page]);
+  }, [numPage, page]);
 
   return (
     <ul className="pagination">

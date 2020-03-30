@@ -18,7 +18,7 @@ function Results({ addFav, handleRemoveFav }) {
   const [numPage, setNumPage] = useState([]);
 
   useEffect(() => {
-    const fetchData = async (req, res) => {
+    const fetchData = async () => {
       const response = await axios.get(
         `https://backend-marvel-test.herokuapp.com/search/${category}/${searchInput}?page=${page}`
       );
@@ -45,20 +45,20 @@ function Results({ addFav, handleRemoveFav }) {
   return (
     <>
       <Search />
+      {numPage.length > 1 ? (
+        <Pagination
+          setIsLoading={setIsLoading}
+          page={page}
+          setPage={setPage}
+          numPage={numPage}
+        />
+      ) : (
+        <div className="no-pagination"></div>
+      )}
       {isLoading ? (
         <Loading />
       ) : (
         <>
-          {numPage.length > 1 ? (
-            <Pagination
-              setIsLoading={setIsLoading}
-              page={page}
-              setPage={setPage}
-              numPage={numPage}
-            />
-          ) : (
-            <div className="no-pagination"></div>
-          )}
           <div className="results wrapper">
             {category === "characters"
               ? data.results.map(element => {
@@ -68,6 +68,7 @@ function Results({ addFav, handleRemoveFav }) {
                       title={element.name}
                       description={element.description}
                       category={category}
+                      key={element.id}
                       id={element.id}
                       addFav={addFav}
                       handleRemoveFav={handleRemoveFav}
@@ -82,6 +83,7 @@ function Results({ addFav, handleRemoveFav }) {
                       title={element.title}
                       description={element.description}
                       category={category}
+                      key={element.id}
                       id={element.id}
                       addFav={addFav}
                       handleRemoveFav={handleRemoveFav}
@@ -90,17 +92,17 @@ function Results({ addFav, handleRemoveFav }) {
                   );
                 })}
           </div>
-          {numPage.length > 1 ? (
-            <Pagination
-              setIsLoading={setIsLoading}
-              page={page}
-              setPage={setPage}
-              numPage={numPage}
-            />
-          ) : (
-            <div className="no-pagination"></div>
-          )}
         </>
+      )}
+      {numPage.length > 1 ? (
+        <Pagination
+          setIsLoading={setIsLoading}
+          page={page}
+          setPage={setPage}
+          numPage={numPage}
+        />
+      ) : (
+        <div className="no-pagination"></div>
       )}
     </>
   );
