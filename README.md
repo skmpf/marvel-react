@@ -1,68 +1,93 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Marvel wiki
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+Replica of Marvel website in React. Full stack project inspired by <a href="https://www.marvel.com/">https://www.marvel.com/</a>
 
-### `npm start`
+<p align="center">
+	<img
+			width="600"
+			alt="demo"
+			src="https://github.com/sebkpf/marvel-react/blob/master/documentation/demo.png">
+</p>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<p align="center">
+  Demo:<a href="https://wiki-marvel.netlify.com/" target="_blank"> https://wiki-marvel.netlify.com/</a>
+</p>
+<p align="center">
+ This project was bootstrapped with <a href=https://github.com/facebook/create-react-app. target="_blank">Create React App</a>
+</p>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+**Functionnalities**
 
-### `npm test`
+- Get characters: axios request from API
+- Get comics: axios request from API
+- Search for characters or comics: axios request from API
+- Add/remove comics and characters to favorites: handled by cookie
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**UI**
 
-### `npm run build`
+- Homemade UI without framework
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Client**
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- React
+- HTTP request with axios package (get and post)
+- Hooks (useState, useEffect)
+- React Router Dom
+- Cookies to handle user favorites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Running the project
 
-### `npm run eject`
+Clone this repository:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+git clone https://github.com/sebkpf/marvel-react.git
+cd marvel-react
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Install packages:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+npm install
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+When installation is complete, run with:
 
-## Learn More
+```bash
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Marvel API
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<a href="https://github.com/sebkpf/marvel-backend">https://github.com/sebkpf/marvel-backend</a>
 
-### Code Splitting
+- Node.js
+- axios
+- express
+- express-formidable
+- cors
+- mongoose
+- crypto-js
+- js-md5
+- uid2
+- dotenv
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Deployment
 
-### Analyzing the Bundle Size
+- Client deployed with Netlify
+- Server deployed with Heroku
+- MongoDB database hosted on mLab
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Project status
 
-### Making a Progressive Web App
+Project is fully functional, however there are several bugs which need fixing:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- the search bar which does not allow subsequent search directly after previous search
+- pagination on search results does not seem to function
+- project is not responsive yet
+- user authentication is not handled yet
 
-### Advanced Configuration
+## Contact
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<a href="https://www.linkedin.com/in/sebastienkempf/" target="_blank">My LinkedIn profile</a>
