@@ -2,11 +2,11 @@
 
 ## Overview
 
-Replica of Marvel website in React. Full stack project inspired by <a href="https://www.marvel.com/">https://www.marvel.com/</a>
+Replica of Marvel website in React. Full stack project inspired by [https://www.marvel.com/](https://www.marvel.com/)
 
 <p align="center">
 	<img
-			width="600"
+			width="1000"
 			alt="demo"
 			src="https://github.com/sebkpf/marvel-react/blob/master/documentation/demo.png">
 </p>
@@ -31,11 +31,10 @@ Replica of Marvel website in React. Full stack project inspired by <a href="http
 
 **Client**
 
-- React
-- HTTP request with axios package (get and post)
-- Hooks (useState, useEffect)
-- React Router Dom
-- Cookies to handle user favorites
+- [React](https://reactjs.org/docs/getting-started.html)
+- [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
+- [JS Cookie](https://github.com/js-cookie/js-cookie)
+- [Axios](https://github.com/axios/axios)
 
 ### Running the project
 
@@ -60,18 +59,18 @@ npm start
 
 ## Marvel API
 
-<a href="https://github.com/sebkpf/marvel-backend">https://github.com/sebkpf/marvel-backend</a>
+[https://github.com/sebkpf/marvel-backend](https://github.com/sebkpf/marvel-backend)
 
-- Node.js
-- axios
-- express
-- express-formidable
-- cors
-- mongoose
-- crypto-js
-- js-md5
-- uid2
-- dotenv
+- [Node.js](https://nodejs.org/en/)
+- [axios](https://www.npmjs.com/package/axios)
+- [express](https://www.npmjs.com/package/express)
+- [express-formidable](https://www.npmjs.com/package/express-formidable)
+- [cors](https://www.npmjs.com/package/cors)
+- [mongoose](https://www.npmjs.com/package/mongoose)
+- [crypto-js](https://www.npmjs.com/package/crypto-js)
+- [js-md5](https://www.npmjs.com/package/js-md5)
+- [uid2](https://www.npmjs.com/package/uid2)
+- [dotenv](https://www.npmjs.com/package/dotenv)
 
 ## Deployment
 
@@ -90,4 +89,4 @@ Project is fully functional, however there are several bugs which need fixing:
 
 ## Contact
 
-<a href="https://www.linkedin.com/in/sebastienkempf/" target="_blank">My LinkedIn profile</a>
+[My LinkedIn profile](https://www.linkedin.com/in/sebastienkempf/)
