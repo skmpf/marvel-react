@@ -16,6 +16,14 @@ function Card({
 }) {
   return (
     <div className={category === "characters" ? "character" : "comic"}>
+      <button
+        className="star"
+        onClick={() => {
+          star ? addFav(id, category) : handleRemoveFav(id)
+        }}
+      > 
+        <i className={`fas fa-star ${star && "starred"}`}></i>
+      </button>
       <div className="img-container">
         <img src={image} alt={title} />
       </div>
@@ -39,26 +47,6 @@ function Card({
             </li>
           </>
         )}
-
-        {star ? (
-          <li className="star">
-            <i
-              className="fas fa-star"
-              onClick={() => {
-                addFav(id, category);
-              }}
-            ></i>
-          </li>
-        ) : cross ? (
-          <li className="cross">
-            <i
-              className="fas fa-times"
-              onClick={() => {
-                handleRemoveFav(id);
-              }}
-            ></i>
-          </li>
-        ) : null}
       </ul>
     </div>
   );

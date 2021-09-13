@@ -12,7 +12,7 @@
 .fav-characters,
 .fav-comics {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   overflow: scroll;
   overflow-y: hidden;
   border-radius: 5px;

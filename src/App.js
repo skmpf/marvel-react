@@ -24,15 +24,9 @@ function App() {
     if (from === "characters") {
       if (favCopy[0].indexOf(id) === -1) {
         favCopy[0].push(id);
-        alert("Added to favorites!");
-      } else {
-        alert("Already in favorites!");
       }
     } else if (favCopy[1].indexOf(id) === -1) {
       favCopy[1].push(id);
-      alert("Added to favorites");
-    } else {
-      alert("Already in favorites!");
     }
     setFav(favCopy);
     Cookies.set("fav", JSON.stringify(favCopy), { expires: 100 });
