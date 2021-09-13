@@ -56,7 +56,7 @@ function Results({ fav, setFav }) {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="results wrapper">
+        <div className={`results wrapper ${numPage.length === 1 ? "round" : ""}`}>
           {category === "characters"
             ? data.results.map(element => {
                 return (

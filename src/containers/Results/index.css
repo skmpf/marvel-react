@@ -17,3 +17,6 @@
 .no-pagination {
   height: 20px;
 }
+.round {
+  border-radius: 5px;
+}
