@@ -1,6 +1,6 @@
 /* LOADING */
 .loading {
-  min-height: 85vh;
+  height: calc(100vh - 240px);
 }
 .loading p {
   font-weight: bold;

@@ -5,7 +5,6 @@ import axios from "axios";
 import "./index.css";
 
 import Loading from "../../components/Loading/";
-import Search from "../../components/Search/";
 import Card from "../../components/Card/";
 
 function Favorites({ fav, handleRemoveFav }) {
@@ -25,8 +24,7 @@ function Favorites({ fav, handleRemoveFav }) {
   }, [fav]);
 
   return (
-    <>
-      <Search />
+    <div className="content">
       {isLoading ? (
         <Loading />
       ) : (
@@ -78,7 +76,7 @@ function Favorites({ fav, handleRemoveFav }) {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

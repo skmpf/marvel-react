@@ -5,7 +5,6 @@ import axios from "axios";
 
 import "./index.css";
 import Loading from "../../components/Loading/";
-import Search from "../../components/Search/";
 import Pagination from "../../components/Pagination/";
 import Card from "../../components/Card/";
 
@@ -44,7 +43,6 @@ function Results({ addFav, handleRemoveFav }) {
 
   return (
     <>
-      <Search />
       {numPage.length > 1 ? (
         <Pagination
           setIsLoading={setIsLoading}

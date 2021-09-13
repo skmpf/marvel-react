@@ -1,9 +1,12 @@
 /* CHARACTER */
 .charId {
-  min-height: 83.2vh;
+  height: calc(100vh - 180px);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: rgba(9, 9, 9, 0.8);
+  padding: 0 40px;
+  color: white;
 }
 .charId img {
   height: 50vh;

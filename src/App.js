@@ -62,35 +62,33 @@ function App() {
   };
 
   return (
-    <>
-      <Router>
-        <Header />
-        <Switch>
-          <Route path="/characters/:id">
-            <Character />
-          </Route>
-          <Route path="/comics">
-            <Comics addFav={addFav} handleRemoveFav={handleRemoveFav} />
-          </Route>
-          <Route path="/search/:category/:searchInput">
-            <Results addFav={addFav} handleRemoveFav={handleRemoveFav} />
-          </Route>
-          <Route path="/user/favorites">
-            <Favorites fav={fav} handleRemoveFav={handleRemoveFav} />
-          </Route>
-          {/* <Route path="/user/sign_in">
-            <SignIn />
-          </Route>
-          <Route path="/user/sign_up">
-            <SignUp />
-          </Route> */}
-          <Route exact path="/">
-            <Characters addFav={addFav} handleRemoveFav={handleRemoveFav} />
-          </Route>
-        </Switch>
-        <Footer />
-      </Router>
-    </>
+    <Router>
+      <Header />
+      <Switch>
+        <Route path="/characters/:id">
+          <Character />
+        </Route>
+        <Route path="/comics">
+          <Comics addFav={addFav} handleRemoveFav={handleRemoveFav} />
+        </Route>
+        <Route path="/search/:category/:searchInput">
+          <Results addFav={addFav} handleRemoveFav={handleRemoveFav} />
+        </Route>
+        <Route path="/user/favorites">
+          <Favorites fav={fav} handleRemoveFav={handleRemoveFav} />
+        </Route>
+        {/* <Route path="/user/sign_in">
+          <SignIn />
+        </Route>
+        <Route path="/user/sign_up">
+          <SignUp />
+        </Route> */}
+        <Route exact path="/">
+          <Characters addFav={addFav} handleRemoveFav={handleRemoveFav} />
+        </Route>
+      </Switch>
+      <Footer />
+    </Router>
   );
 }
 

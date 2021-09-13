@@ -23,7 +23,7 @@ function Character() {
   }, []);
 
   return (
-    <>
+    <div className="content">
       {isLoading ? (
         <Loading />
       ) : (
@@ -48,7 +48,7 @@ function Character() {
           </li>
         </ul>
       )}
-    </>
+    </div>
   );
 }
 

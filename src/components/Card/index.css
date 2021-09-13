@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  border-radius: 5px;
 }
 .character > .details {
   width: 193px;
@@ -25,6 +26,7 @@
   height: 206px;
   width: 193px;
   overflow: hidden;
+  border-radius: 5px 5px 0 0;
 }
 .character img {
   height: 206px;
@@ -65,6 +67,8 @@
   flex-direction: column;
   margin-bottom: 30px;
   box-sizing: border-box;
+  background-color: white;
+  border-radius: 5px;
 }
 .comic > .details {
   width: 224px;
@@ -85,8 +89,8 @@
 .comic img {
   width: 224px;
   height: 338px;
-  object-fit: cover;
-  object-position: center;
+  object-fit: fill;
+  border-radius: 5px 5px 0 0;
 }
 .comic li:first-child {
   height: 70px;

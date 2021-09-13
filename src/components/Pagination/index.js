@@ -40,7 +40,7 @@ function Pagination({ page, setPage, numPage, setIsLoading }) {
   }, [numPage, page]);
 
   return (
-    <ul className="pagination">
+    <ul className="pagination wrapper">
       <li
         onClick={() => {
           if (page !== 1) {

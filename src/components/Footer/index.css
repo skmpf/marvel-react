@@ -1,11 +1,14 @@
 /* FOOTER */
 footer {
   height: 40px;
+  width: 100%;
   color: white;
   background-color: #1d1d1d;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
 }
 footer a,
 footer a:visited {

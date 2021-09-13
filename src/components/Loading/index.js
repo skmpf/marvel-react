@@ -1,12 +1,12 @@
 import React from "react";
 
 import "./index.css";
-import loading from "../../assets/img/marvel-loading.gif";
+import buffering from "../../assets/img/loading-buffering.gif";
 
 function Loading() {
   return (
     <div className="loading wrapper d-flex align-center just-center">
-      <img src={loading} alt="Page Loading" />
+      <img src={buffering} alt="Page Loading" />
     </div>
   );
 }

@@ -6,7 +6,6 @@ import "./index.css";
 import Pagination from "../../components/Pagination/";
 
 import Loading from "../../components/Loading/";
-import Search from "../../components/Search/";
 import Card from "../../components/Card/";
 
 const axios = require("axios");
@@ -43,8 +42,7 @@ function Characters({ addFav, handleRemoveFav }) {
   }, [page]);
 
   return (
-    <>
-      <Search />
+    <div className="content">
       <Pagination
         setIsLoading={setIsLoading}
         page={page}
@@ -77,7 +75,7 @@ function Characters({ addFav, handleRemoveFav }) {
         setPage={setPage}
         numPage={numPage}
       />
-    </>
+    </div>
   );
 }
 
