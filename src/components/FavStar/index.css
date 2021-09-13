@@ -1,12 +1,11 @@
 /* FAVORITE */
 .star {
-  position: absolute;
-  margin: 5px;
   height: 30px;
   width: 30px;
   border-radius: 15px;
   background-color: white;
-  z-index: 10;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 .star i {
   font-size: 25px;

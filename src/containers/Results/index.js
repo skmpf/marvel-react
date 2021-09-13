@@ -8,7 +8,7 @@ import Loading from "../../components/Loading/";
 import Pagination from "../../components/Pagination/";
 import Card from "../../components/Card/";
 
-function Results({ addFav, handleRemoveFav }) {
+function Results({ fav, setFav }) {
   const { searchInput } = useParams();
   const { category } = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -42,7 +42,7 @@ function Results({ addFav, handleRemoveFav }) {
   }, []);
 
   return (
-    <>
+    <div className="content results-page">
       {numPage.length > 1 ? (
         <Pagination
           setIsLoading={setIsLoading}
@@ -56,39 +56,37 @@ function Results({ addFav, handleRemoveFav }) {
       {isLoading ? (
         <Loading />
       ) : (
-        <>
-          <div className="results wrapper">
-            {category === "characters"
-              ? data.results.map(element => {
-                  return (
-                    <Card
-                      image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
-                      title={element.name}
-                      description={element.description}
-                      category={category}
-                      key={element.id}
-                      id={element.id}
-                      addFav={addFav}
-                      handleRemoveFav={handleRemoveFav}
-                    />
-                  );
-                })
-              : data.results.map(element => {
-                  return (
-                    <Card
-                      image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
-                      title={element.title}
-                      description={element.description}
-                      category={category}
-                      key={element.id}
-                      id={element.id}
-                      addFav={addFav}
-                      handleRemoveFav={handleRemoveFav}
-                    />
-                  );
-                })}
-          </div>
-        </>
+        <div className="results wrapper">
+          {category === "characters"
+            ? data.results.map(element => {
+                return (
+                  <Card
+                    image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
+                    title={element.name}
+                    description={element.description}
+                    category={category}
+                    key={element.id}
+                    id={element.id}
+                    fav={fav}
+                    setFav={setFav}
+                  />
+                );
+              })
+            : data.results.map(element => {
+                return (
+                  <Card
+                    image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
+                    title={element.title}
+                    description={element.description}
+                    category={category}
+                    key={element.id}
+                    id={element.id}
+                    fav={fav}
+                    setFav={setFav}
+                  />
+                );
+              })}
+        </div>
       )}
       {numPage.length > 1 ? (
         <Pagination
@@ -100,7 +98,7 @@ function Results({ addFav, handleRemoveFav }) {
       ) : (
         <div className="no-pagination"></div>
       )}
-    </>
+    </div>
   );
 }
 

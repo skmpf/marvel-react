@@ -12,9 +12,8 @@
 .fav-characters,
 .fav-comics {
   display: flex;
-  justify-content: space-around;
-  overflow: scroll;
-  overflow-y: hidden;
+  justify-content: space-between;
+  overflow: auto;
   border-radius: 5px;
 }
 .favorites > div {

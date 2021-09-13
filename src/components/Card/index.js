@@ -16,14 +16,25 @@ function Card({
 
   return (
     <div className={category === "characters" ? "character" : "comic"}>
-      <FavStar
-        id={id}
-        category={category}
-        fav={fav}
-        setFav={setFav}
-      />
       <div className="img-container">
-        <img src={image} alt={title} />
+        <div
+          className="image"
+          style={{
+            backgroundImage: `url(${image})`,
+            backgroundPosition: "center top",
+            backgroundClip: "content-box",
+            backgroundOrigin: "content-box",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
+        >
+          <FavStar
+            id={id}
+            category={category}
+            fav={fav}
+            setFav={setFav}
+          />
+        </div>
       </div>
       <ul className="details">
         {category === "characters" ? (

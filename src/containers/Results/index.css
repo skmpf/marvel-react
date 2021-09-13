@@ -1,8 +1,18 @@
 /* RESULTS */
+.results-page {
+
+}
 .results {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  height: 100%;
+  background-color: rgba(9, 9, 9, 0.8);
+  padding: 0 40px;
+  padding-top: 20px;
+}
+.results .character {
+  height: 100%;
 }
 .no-pagination {
   height: 20px;

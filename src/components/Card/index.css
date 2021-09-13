@@ -28,19 +28,13 @@
   overflow: hidden;
   border-radius: 5px 5px 0 0;
 }
-.character img {
+.character .image {
   height: 206px;
   width: 193px;
-  object-fit: fill;
-  object-position: center;
   transition: transform 0.2s ease;
 }
-.character:hover img {
+.character:hover .image {
   transform: scale(1.1);
-  height: 206px;
-  width: 193px;
-  object-fit: fill;
-  object-position: center;
 }
 .character .details li:first-child {
   height: 60px;
@@ -86,7 +80,7 @@
   overflow: hidden;
   transition: transform 0.2s ease;
 }
-.comic img {
+.comic .image {
   width: 224px;
   height: 338px;
   object-fit: fill;
