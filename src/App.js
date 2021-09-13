@@ -17,7 +17,7 @@ import Favorites from "./containers/Favorites/";
 
 function App() {
   let cookie = Cookies.get("fav");
-  const [fav, setFav] = useState((cookie && JSON.parse(cookie)) || [[], []]);
+  const [fav, setFav] = useState((cookie && JSON.parse(cookie)) || [[1017104, 1009718, 1009268, 1016181, 1009577], [4313, 5227, 53468, 6415]]);
   
   return (
     <Router>
