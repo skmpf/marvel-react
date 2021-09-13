@@ -1,15 +1,21 @@
 /* HEADER */
 header {
-  background-color: #1d1d1d;
   position: sticky;
   top: 0;
   z-index: 100;
+  background-color: #1d1d1d;
+}
+header > div:first-child {
+  padding: 0 10vw;
+  background-color: #1d1d1d;
+  justify-content: space-between;
 }
 header img {
   height: 50px;
 }
 .menu {
-  height: 80px;
+  height: 40px;
+  padding-top: 10px;
   font-size: 24px;
   line-height: 24px;
   font-weight: bold;
@@ -34,4 +40,17 @@ header img {
 .border {
   border: 1px solid #393939;
   width: 100%;
+}
+.signin-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  width: 100px;
+  height: 35px;
+  border-radius: 35px;
+}
+.signin-btn a {
+  color: white;
+  font-weight: bold;
 }

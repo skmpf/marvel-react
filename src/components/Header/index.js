@@ -12,6 +12,7 @@ function Header() {
         <Link to="/">
           <img src={logo} alt="marvel-logo" />
         </Link>
+        <div>
         <ul className="menu">
           <li>
             <Link to="/">CHARACTERS</Link>
@@ -23,11 +24,13 @@ function Header() {
             <Link to="/user/favorites">FAVORITES</Link>
           </li>
         </ul>
-        <div>
-          <Link to="/user/sign_in">SIGN IN</Link>
+        <Search />
+        </div>
+        <div className="signin-btn">
+          {/* <Link to="/user/sign_in">SIGN IN</Link> */}
+          <Link>SIGN IN</Link>
         </div>
       </div>
-      <Search />
     </header>
   );
 }
