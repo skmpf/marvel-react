@@ -1,0 +1,18 @@
+/* FAVORITE */
+.star {
+  position: absolute;
+  margin: 5px;
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  background-color: white;
+  z-index: 10;
+}
+.star i {
+  font-size: 25px;
+  color: grey;
+  transform: translateX(-5px);
+}
+.starred {
+  color: #f4c552 !important;
+}

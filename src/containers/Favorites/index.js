@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 import "./index.css";
@@ -7,7 +6,8 @@ import "./index.css";
 import Loading from "../../components/Loading/";
 import Card from "../../components/Card/";
 
-function Favorites({ fav, handleRemoveFav }) {
+function Favorites({ fav, setFav }) {
+
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -43,8 +43,8 @@ function Favorites({ fav, handleRemoveFav }) {
                       description={element.data.results[0].description}
                       category={"characters"}
                       id={element.data.results[0].id}
-                      handleRemoveFav={handleRemoveFav}
-                      cross
+                      fav={fav}
+                      setFav={setFav}
                     />
                   );
                 })}
@@ -66,8 +66,8 @@ function Favorites({ fav, handleRemoveFav }) {
                       category={"comics"}
                       id={element.data.results[0].id}
                       key={element.data.results[0].id}
-                      handleRemoveFav={handleRemoveFav}
-                      cross
+                      fav={fav}
+                      setFav={setFav}
                     />
                   );
                 })}

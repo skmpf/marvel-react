@@ -70,7 +70,6 @@ function Results({ addFav, handleRemoveFav }) {
                       id={element.id}
                       addFav={addFav}
                       handleRemoveFav={handleRemoveFav}
-                      star
                     />
                   );
                 })
@@ -85,7 +84,6 @@ function Results({ addFav, handleRemoveFav }) {
                       id={element.id}
                       addFav={addFav}
                       handleRemoveFav={handleRemoveFav}
-                      star
                     />
                   );
                 })}

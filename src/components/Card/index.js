@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import "./index.css";
+import FavStar from "../FavStar/index";
 
 function Card({
   id,
@@ -9,21 +10,18 @@ function Card({
   title,
   description,
   category,
-  addFav,
-  handleRemoveFav,
-  star,
-  cross
+  fav,
+  setFav,
 }) {
+
   return (
     <div className={category === "characters" ? "character" : "comic"}>
-      <button
-        className="star"
-        onClick={() => {
-          star ? addFav(id, category) : handleRemoveFav(id)
-        }}
-      > 
-        <i className={`fas fa-star ${star && "starred"}`}></i>
-      </button>
+      <FavStar
+        id={id}
+        category={category}
+        fav={fav}
+        setFav={setFav}
+      />
       <div className="img-container">
         <img src={image} alt={title} />
       </div>

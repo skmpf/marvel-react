@@ -10,7 +10,7 @@ import Card from "../../components/Card/";
 
 const axios = require("axios");
 
-function Characters({ addFav, handleRemoveFav }) {
+function Characters({ fav, setFav }) {
   const [data, setData] = useState();
   const [category, setCategory] = useState("characters");
   const [isLoading, setIsLoading] = useState(true);
@@ -61,9 +61,8 @@ function Characters({ addFav, handleRemoveFav }) {
                 description={element.description}
                 category={category}
                 id={element.id}
-                addFav={addFav}
-                handleRemoveFav={handleRemoveFav}
-                star
+                fav={fav}
+                setFav={setFav}
               />
             );
           })}

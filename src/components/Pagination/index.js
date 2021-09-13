@@ -5,9 +5,6 @@ import "./index.css";
 function Pagination({ page, setPage, numPage, setIsLoading }) {
   const [filter, setFilter] = useState([]);
 
-  console.log("numPage");
-  console.log(numPage);
-
   useEffect(() => {
     const filterPages = () => {
       const filter = [];
