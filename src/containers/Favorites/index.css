@@ -4,20 +4,27 @@
   height: calc(100vh - 170px);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: rgba(9, 9, 9, 0.8);
   padding: 40px;
   color: white;
 }
-.favorites .characters,
-.favorites .comics {
-  margin: 20px 0;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.fav-characters,
+.fav-comics {
+  display: flex;
+  justify-content: space-between;
+  overflow: scroll;
+  overflow-y: hidden;
   border-radius: 5px;
 }
 .favorites > div {
   display: flex;
   flex-direction: column;
-  flex: 1 1;
+}
+.favorites h2 {
+  margin-bottom: 15px;
+}
+.fav-characters .character,
+.fav-comics .comic {
+  margin: 0 5px;
 }

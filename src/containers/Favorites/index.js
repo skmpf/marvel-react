@@ -34,7 +34,7 @@ function Favorites({ fav, handleRemoveFav }) {
             {data[0].length === 0 ? (
               <span>No favorite character!</span>
             ) : (
-              <ul className="characters">
+              <ul className="fav-characters">
                 {data[0].map(element => {
                   return (
                     <Card
@@ -56,7 +56,7 @@ function Favorites({ fav, handleRemoveFav }) {
             {data[1].length === 0 ? (
               <span>No favorite comic!</span>
             ) : (
-              <ul className="comics">
+              <ul className="fav-comics">
                 {data[1].map(element => {
                   return (
                     <Card
