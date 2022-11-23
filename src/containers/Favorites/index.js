@@ -7,14 +7,13 @@ import Loading from "../../components/Loading/";
 import Card from "../../components/Card/";
 
 function Favorites({ fav, setFav }) {
-
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.post(
-        `https://backend-marvel-test.herokuapp.com/favorites`,
+        `https://backend-marvel-test.fly.dev/favorites`,
         { fav }
       );
       setData(response.data);
@@ -35,7 +34,7 @@ function Favorites({ fav, setFav }) {
               <span>No favorite character!</span>
             ) : (
               <ul className="fav-characters">
-                {data[0].map(element => {
+                {data[0].map((element) => {
                   return (
                     <Card
                       image={`${element.data.results[0].thumbnail.path}.${element.data.results[0].thumbnail.extension}`}
@@ -57,7 +56,7 @@ function Favorites({ fav, setFav }) {
               <span>No favorite comic!</span>
             ) : (
               <ul className="fav-comics">
-                {data[1].map(element => {
+                {data[1].map((element) => {
                   return (
                     <Card
                       image={`${element.data.results[0].thumbnail.path}.${element.data.results[0].thumbnail.extension}`}

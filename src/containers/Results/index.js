@@ -19,7 +19,7 @@ function Results({ fav, setFav }) {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `https://backend-marvel-test.herokuapp.com/search/${category}/${searchInput}?page=${page}`
+        `https://backend-marvel-test.fly.dev/search/${category}/${searchInput}?page=${page}`
       );
       setData(response.data);
       const total = response.data.total;
@@ -56,9 +56,11 @@ function Results({ fav, setFav }) {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className={`results wrapper ${numPage.length === 1 ? "round" : ""}`}>
+        <div
+          className={`results wrapper ${numPage.length === 1 ? "round" : ""}`}
+        >
           {category === "characters"
-            ? data.results.map(element => {
+            ? data.results.map((element) => {
                 return (
                   <Card
                     image={`${element.thumbnail.path}.${element.thumbnail.extension}`}
@@ -72,7 +74,7 @@ function Results({ fav, setFav }) {
                   />
                 );
               })
-            : data.results.map(element => {
+            : data.results.map((element) => {
                 return (
                   <Card
                     image={`${element.thumbnail.path}.${element.thumbnail.extension}`}

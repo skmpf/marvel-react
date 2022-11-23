@@ -20,7 +20,7 @@ function Characters({ fav, setFav }) {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `https://backend-marvel-test.herokuapp.com/characters?page=${page}`
+        `https://backend-marvel-test.fly.dev/characters?page=${page}`
       );
       setData(response.data.data.results);
       const total = response.data.data.total;
@@ -53,7 +53,7 @@ function Characters({ fav, setFav }) {
         <Loading />
       ) : (
         <ul className="characters wrapper">
-          {data.map(element => {
+          {data.map((element) => {
             return (
               <Card
                 image={`${element.thumbnail.path}.${element.thumbnail.extension}`}

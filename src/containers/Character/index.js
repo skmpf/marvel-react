@@ -14,7 +14,7 @@ function Character() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "https://backend-marvel-test.herokuapp.com/characters/" + id
+        "https://backend-marvel-test.fly.dev/characters/" + id
       );
       setData(response.data.data.results[0]);
       setIsLoading(false);
@@ -38,7 +38,7 @@ function Character() {
           <li className="character-details">
             <p>{data.description}</p>
             <h4>Appearances in Comics:</h4>
-            {data.comics.items.map(item => {
+            {data.comics.items.map((item) => {
               return (
                 <p key={item.name} href={item.resourceURI}>
                   {item.name}
